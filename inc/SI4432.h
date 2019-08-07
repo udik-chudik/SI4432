@@ -1,4 +1,5 @@
 #include "SI4432_constants.h"
+#include <stdint.h>
 
 typedef struct
 {
