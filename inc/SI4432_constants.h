@@ -1,0 +1,78 @@
+/*
+    Packet handler config values. Default values are:
+    * Packet length includes in packet
+    * Preambule < 128 bytes
+    * MSB first
+*/
+typedef enum {
+    SI44_PH_OFF     = 0b00000000,
+    SI44_PH_RX_ONLY = 0b10000000,
+    SI44_PH_TX_ONLY = 0b00001000,
+    SI44_PH_TXRX = SI44_PH_TX_ONLY | SI44_PH_RX_ONLY
+} SI44_PH_PATH;
+
+typedef enum {
+    SI44_PH_CRC_OFF = 0b00000000,
+    SI44_PH_CRC_ON  = 0b00000100,
+    SI44_PH_CRC_DATA_ONLY = SI44_PH_CRC_ON | 0b00100000
+} SI44_PH_CRC;
+
+typedef enum {
+    SI44_PH_CRC_TYPE_CITT       = 0b00000000,
+    SI44_PH_CRC_TYPE_IBM16      = 0b00000001,
+    SI44_PH_CRC_TYPE_IEC16      = 0b00000010,
+    SI44_PH_CRC_TYPE_BIACHEVA   = 0b00000011
+} SI44_PH_CRC_TYPE;
+
+typedef enum {
+    SI44_PH_HEADER_OFF  = 0b00000000,
+    SI44_PH_HEADER_1    = 0b00010000,
+    SI44_PH_HEADER_2    = 0b00100000,
+    SI44_PH_HEADER_3    = 0b00110000,
+    SI44_PH_HEADER_4    = 0b01000000
+} SI44_PH_HEADER_LENGTH;
+
+typedef enum {
+    SI44_PH_SYNC_1    = 0b00000000,
+    SI44_PH_SYNC_2    = 0b00000010,
+    SI44_PH_SYNC_3    = 0b00000100,
+    SI44_PH_SYNC_4    = 0b00000110
+} SI44_PH_SYNC_LENGTH;
+
+/*
+    Output power in Si4432 corresponds to +20dBm
+*/
+
+typedef enum {
+    SI44_TX_POWER_11dBm   = 0b00000000,
+    SI44_TX_POWER_14dBm   = 0b00000001,
+    SI44_TX_POWER_17dBm   = 0b00000010,
+    SI44_TX_POWER_20dBm   = 0b00000011,
+
+} SI44_TX_POWER;
+
+/*
+    Tx settings. Default values:
+    * data rate < 30 kbps
+    * No TX data clock (because we use FIFO mode)
+    * Frequency deviation < 160 kHz
+*/
+
+#define SI44_DATA_WHITENING_ENABLED     0b00000001
+#define SI44_DATA_MANCHESTER_ENABLED    0b00000010
+#define SI44_DATA_MANCHESTER_INVERSION  0b00000100
+#define SI44_DATA_MANCHESTER_POLARITY   0b00001000
+
+typedef enum {
+    SI44_MODULATION_SOURCE_GPIO    = 0b00000000,
+    SI44_MODULATION_SOURCE_SDI     = 0b00010000,
+    SI44_MODULATION_SOURCE_FIFO    = 0b00100000,
+    SI44_MODULATION_SOURCE_PN9     = 0b01100000
+} SI44_MODULATION_SOURCE;
+
+typedef enum {
+    SI44_MODULATION_TYPE_UNMODULATED    = 0b00000000,
+    SI44_MODULATION_TYPE_OOK            = 0b00000001,
+    SI44_MODULATION_TYPE_FSK            = 0b00000010,
+    SI44_MODULATION_TYPE_GFSK           = 0b00000011
+} SI44_MODULATION_TYPE;
