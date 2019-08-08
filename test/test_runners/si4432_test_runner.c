@@ -29,6 +29,8 @@
 #include <stdio.h>
 #include "SI4432.h"
 #include "SI4432_private.h"
+#include "io_fake.h"
+#include <string.h>
 
 /*=======External Functions This Runner Calls=====*/
 extern void setUp(void);
@@ -38,6 +40,17 @@ extern void test_SI44_CalcFrequencyCarier(void);
 extern void test_SI44_CalcDataRateRegisters(void);
 extern void test_SI44_CalcPHRegisters(void);
 extern void test_SI44_CalcConfigRegisters(void);
+extern void test_SI44_ReadStatus(void);
+extern void test_SI44_Reset(void);
+extern void test_SI44_Init(void);
+extern void test_SI44_SetConfig(void);
+extern void test_SI44_SetPHConfig(void);
+extern void test_SI44_SetFrequency(void);
+extern void test_SI44_SetDataRate(void);
+extern void test_SI44_SetFrequencyDeviation(void);
+extern void test_SI44_SetTXPower(void);
+extern void test_SI44_SendPacket(void);
+extern void test_SI44_ResendPacket(void);
 
 
 /*=======Suite Setup=====*/
@@ -72,11 +85,22 @@ int main(void)
 {
   suite_setup();
   UnityBegin("test/test_si4432.c");
-  RUN_TEST(test_SI44_CalcFrequencyDeviationRegister, 5);
-  RUN_TEST(test_SI44_CalcFrequencyCarier, 18);
-  RUN_TEST(test_SI44_CalcDataRateRegisters, 72);
-  RUN_TEST(test_SI44_CalcPHRegisters, 100);
-  RUN_TEST(test_SI44_CalcConfigRegisters, 122);
+  RUN_TEST(test_SI44_CalcFrequencyDeviationRegister, 22);
+  RUN_TEST(test_SI44_CalcFrequencyCarier, 35);
+  RUN_TEST(test_SI44_CalcDataRateRegisters, 89);
+  RUN_TEST(test_SI44_CalcPHRegisters, 117);
+  RUN_TEST(test_SI44_CalcConfigRegisters, 139);
+  RUN_TEST(test_SI44_ReadStatus, 155);
+  RUN_TEST(test_SI44_Reset, 165);
+  RUN_TEST(test_SI44_Init, 174);
+  RUN_TEST(test_SI44_SetConfig, 186);
+  RUN_TEST(test_SI44_SetPHConfig, 201);
+  RUN_TEST(test_SI44_SetFrequency, 221);
+  RUN_TEST(test_SI44_SetDataRate, 234);
+  RUN_TEST(test_SI44_SetFrequencyDeviation, 244);
+  RUN_TEST(test_SI44_SetTXPower, 254);
+  RUN_TEST(test_SI44_SendPacket, 265);
+  RUN_TEST(test_SI44_ResendPacket, 278);
 
   return suite_teardown(UnityEnd());
 }

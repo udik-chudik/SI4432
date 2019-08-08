@@ -79,4 +79,29 @@ typedef enum {
     SI44_MODULATION_TYPE_GFSK           = 0b00000011
 } SI44_MODULATION_TYPE;
 
+
+/* Registers */
+
+#define SI44_REG_STATUS 0x02
+#define SI44_REG_CTRL1  0x07
+
+#define SI44_REG_CONF1  0x70
+#define SI44_REG_CONF2  0x71
+
+#define SI44_REG_DATA_ACCESS_CONTROL    0x30
+#define SI44_REG_HEADER_CONTROL         0x33
+#define SI44_REG_PREAMBULE_LENGTH       0x34
+
+#define SI44_REG_FREQ_BAND_SELECT       0x75
+#define SI44_REG_FREQ_MSB               0x76
+#define SI44_REG_FREQ_LSB               0x77
+
+#define SI44_REG_DATARATE_MSB           0x6e
+#define SI44_REG_DATARATE_LSB           0x6f
+
+#define SI44_REG_DEVIATION              0x72
+#define SI44_REG_TX_POWER               0x6d
+
+#define SI44_REG_FIFO_ACCESS            0x7f
+
 #endif
