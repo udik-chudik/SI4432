@@ -35,6 +35,9 @@ extern void setUp(void);
 extern void tearDown(void);
 extern void test_SI44_CalcFrequencyDeviationRegister(void);
 extern void test_SI44_CalcFrequencyCarier(void);
+extern void test_SI44_CalcDataRateRegisters(void);
+extern void test_SI44_CalcPHRegisters(void);
+extern void test_SI44_CalcConfigRegisters(void);
 
 
 /*=======Suite Setup=====*/
@@ -71,6 +74,9 @@ int main(void)
   UnityBegin("test/test_si4432.c");
   RUN_TEST(test_SI44_CalcFrequencyDeviationRegister, 5);
   RUN_TEST(test_SI44_CalcFrequencyCarier, 18);
+  RUN_TEST(test_SI44_CalcDataRateRegisters, 72);
+  RUN_TEST(test_SI44_CalcPHRegisters, 100);
+  RUN_TEST(test_SI44_CalcConfigRegisters, 122);
 
   return suite_teardown(UnityEnd());
 }

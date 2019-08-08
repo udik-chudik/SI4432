@@ -1,6 +1,7 @@
 #include "SI4432_constants.h"
 #include <stdint.h>
-
+#ifndef SI4432
+#define SI4432
 typedef struct
 {
     SI44_PH_PATH path;
@@ -17,3 +18,4 @@ typedef struct
     SI44_MODULATION_SOURCE modulation_source;
     SI44_MODULATION_TYPE modulation_type;
 } si44_config;
+#endif

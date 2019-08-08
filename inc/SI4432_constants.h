@@ -1,3 +1,5 @@
+#ifndef SI4432_CONSTANTS
+#define SI4432_CONSTANTS
 /*
     Packet handler config values. Default values are:
     * Packet length includes in packet
@@ -76,3 +78,5 @@ typedef enum {
     SI44_MODULATION_TYPE_FSK            = 0b00000010,
     SI44_MODULATION_TYPE_GFSK           = 0b00000011
 } SI44_MODULATION_TYPE;
+
+#endif

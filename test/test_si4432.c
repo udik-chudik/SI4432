@@ -59,8 +59,16 @@ void test_SI44_CalcFrequencyCarier(void)
     TEST_ASSERT_EQUAL(0x88, regs[1]);
     //0x77
     TEST_ASSERT_EQUAL(0xc0, regs[2]);
+
+    SI44_CalcFrequencyCarierRegisters(888.88, regs);
+    //0x75
+    TEST_ASSERT_EQUAL(0x74, regs[0]);
+    //0x76
+    TEST_ASSERT_EQUAL(0x6f, regs[1]);
+    //0x77
+    TEST_ASSERT_EQUAL(0x00, regs[2]);
 }
-/*
+
 void test_SI44_CalcDataRateRegisters(void)
 {
     uint8_t regs[2];
@@ -69,7 +77,7 @@ void test_SI44_CalcDataRateRegisters(void)
     TEST_ASSERT_EQUAL(0x08, regs[0]);
     //0x6f
     TEST_ASSERT_EQUAL(0x31, regs[1]);
-
+    
     SI44_CalcDataRateRegisters(1200, regs);
     //0x6e
     TEST_ASSERT_EQUAL(0x09, regs[0]);
@@ -81,7 +89,7 @@ void test_SI44_CalcDataRateRegisters(void)
     TEST_ASSERT_EQUAL(0x09, regs[0]);
     //0x6f
     TEST_ASSERT_EQUAL(0xd5, regs[1]);
-
+    
     SI44_CalcDataRateRegisters(9600, regs);
     //0x6e
     TEST_ASSERT_EQUAL(0x4e, regs[0]);
@@ -108,7 +116,7 @@ void test_SI44_CalcPHRegisters(void)
     //0x33
     TEST_ASSERT_EQUAL(0b00000010, regs[1]);
     //0x34
-    TEST_ASSERT_EQUAL(32*4, regs[2]);
+    TEST_ASSERT_EQUAL(32, regs[2]);
 }
 
 void test_SI44_CalcConfigRegisters(void)
@@ -116,6 +124,7 @@ void test_SI44_CalcConfigRegisters(void)
     si44_config conf;
     conf.modulation_type = SI44_MODULATION_TYPE_GFSK;
     conf.modulation_source = SI44_MODULATION_SOURCE_FIFO;
+    conf.encoding_options = 0;
 
     uint8_t regs[2];
     SI44_CalcConfigRegisters(conf, regs);
@@ -125,7 +134,7 @@ void test_SI44_CalcConfigRegisters(void)
     //0x71
     TEST_ASSERT_EQUAL(0b00100011, regs[1]);
 }
-
+/*
 void test_SI44_Init(void)
 {
     //Should make soft reset
