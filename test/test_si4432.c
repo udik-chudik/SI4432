@@ -35,7 +35,7 @@ void test_SI44_CalcFrequencyCarier(void)
     TEST_ASSERT_EQUAL(0xb1, regs[1]);
     //0x77
     TEST_ASSERT_EQUAL(0x80, regs[2]);
-
+    
     SI44_CalcFrequencyCarierRegisters(250.18, regs);
     //0x75
     TEST_ASSERT_EQUAL(0x41, regs[0]);
@@ -43,7 +43,7 @@ void test_SI44_CalcFrequencyCarier(void)
     TEST_ASSERT_EQUAL(0x04, regs[1]);
     //0x77
     TEST_ASSERT_EQUAL(0x80, regs[2]);
-
+    
     SI44_CalcFrequencyCarierRegisters(911.0, regs);
     //0x75
     TEST_ASSERT_EQUAL(0x75, regs[0]);
