@@ -19,4 +19,8 @@ typedef struct
 extern fake_io_call * fake_io_call_stack;
 extern int fake_io_ncall;
 extern SPI_HandleTypeDef * spi_interface;
+
+
+
+
 #endif

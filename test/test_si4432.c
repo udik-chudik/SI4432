@@ -4,6 +4,7 @@
 #include "io_fake.h"
 #include <string.h>
 fake_io_call * fake_io_call_stack;
+
 int fake_io_ncall;
 SPI_HandleTypeDef * spi_interface;
 void setUp(void)
