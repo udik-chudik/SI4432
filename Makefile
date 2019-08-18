@@ -27,7 +27,7 @@ objects: $(SRC_FILES1)
 	mv *.o build/
 
 default: objects
-	gcc build/si4432_test_runner.o build/test_si4432.o build/unity.o build/si4432.o build/io_fake.o -o build/$(TEST_TARGET1)
+	gcc build/si4432_test_runner.o build/test_si4432.o build/unity.o build/si4432.o build/hal_fake.o build/io_fake.o -o build/$(TEST_TARGET1)
 	gcc build/test_si4432_io_hal_runner.o build/test_si4432_io_hal.o build/unity.o build/hal_fake.o build/si4432_io_hal.o -o build/$(TEST_TARGET2)
 
 test/test_runners/si4432_test_runner.c: test/test_si4432.c

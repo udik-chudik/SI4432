@@ -54,6 +54,7 @@ extern void test_SI44_ResendPacket(void);
 extern void test_SI44_ReadBatteryVoltage(void);
 extern void test_SI44_ReadTemperature(void);
 extern void test_SI44_SetSyncBytes(void);
+extern void test_SI44_ForceRecalibrate(void);
 
 
 /*=======Suite Setup=====*/
@@ -107,6 +108,7 @@ int main(void)
   RUN_TEST(test_SI44_ReadBatteryVoltage, 285);
   RUN_TEST(test_SI44_ReadTemperature, 292);
   RUN_TEST(test_SI44_SetSyncBytes, 317);
+  RUN_TEST(test_SI44_ForceRecalibrate, 335);
 
   return suite_teardown(UnityEnd());
 }

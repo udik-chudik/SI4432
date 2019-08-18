@@ -161,7 +161,7 @@ void test_SI44_ReadStatus(void)
 void test_SI44_Reset(void)
 {
     SI44_Reset();
-    TEST_ASSERT_EQUAL(0b10000001, fake_io_call_stack[0].buf[0]);
+    TEST_ASSERT_EQUAL(0b11000011, fake_io_call_stack[0].buf[0]);
     TEST_ASSERT_EQUAL(1, fake_io_call_stack[0].length);
     TEST_ASSERT_EQUAL(0x07, fake_io_call_stack[0].reg);
     TEST_ASSERT_EQUAL(WRITE, fake_io_call_stack[0].type);
@@ -172,7 +172,7 @@ void test_SI44_Init(void)
     SPI_HandleTypeDef a = 125;
     GPIO_TypeDef port = 1;
     SI44_Init(&a, &port, 1);
-    TEST_ASSERT_EQUAL(0b10000001, fake_io_call_stack[0].buf[0]);
+    TEST_ASSERT_EQUAL(0b11000011, fake_io_call_stack[0].buf[0]);
     TEST_ASSERT_EQUAL(125, *spi_interface);
     TEST_ASSERT_EQUAL(1, fake_io_ncall);
     TEST_ASSERT_EQUAL(0x07, fake_io_call_stack[0].reg);
@@ -329,5 +329,15 @@ void test_SI44_SetSyncBytes(void)
 
     SI44_SetSyncBytes(&s, 5);
     TEST_ASSERT_EQUAL(1, fake_io_ncall);
+
+}
+
+void test_SI44_ForceRecalibrate(void)
+{
+    SI44_ForceRecalibrate();
+    TEST_ASSERT_EQUAL(0b00011110, fake_io_call_stack[0].buf[0]);
+    TEST_ASSERT_EQUAL(1, fake_io_ncall);
+    TEST_ASSERT_EQUAL(0x55, fake_io_call_stack[0].reg);
+    
 
 }

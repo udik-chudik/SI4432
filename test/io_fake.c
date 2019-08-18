@@ -1,6 +1,6 @@
 #include "SI4432_IO.h"
 #include "io_fake.h"
-
+#include "hal_fake.h"
 fake_io_call * fake_io_call_stack;
 
 
@@ -38,9 +38,4 @@ void SI44_IO_Init(SPI_HandleTypeDef * hspi, GPIO_TypeDef *GPIOx, uint16_t GPIO_P
     spi_interface = hspi;
     nss_port = GPIOx;
     nss_pin = GPIO_Pin;
-}
-
-void HAL_Delay(int a)
-{
-    return;
 }

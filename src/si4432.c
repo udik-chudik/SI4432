@@ -65,7 +65,7 @@ uint8_t SI44_ReadStatus(void)
 
 void SI44_Reset(void)
 {
-    uint8_t reset = 0b10000001;
+    uint8_t reset = SI44_OPERATION_MODE_DEFAULT | 0b10000000;
     SI44_Write(SI44_REG_CTRL1, &reset, 1);
 }
 
@@ -142,7 +142,7 @@ void SI44_SendPacket(uint8_t * buf, uint8_t length)
 }
 void SI44_ResendPacket(void)
 {
-    uint8_t txon = 0b00001001;
+    uint8_t txon = SI44_OPERATION_MODE_DEFAULT | 0b00001000;
     SI44_Write(SI44_REG_CTRL1, &txon, 1);
 }
 
@@ -186,4 +186,11 @@ void SI44_SetSyncBytes(uint8_t * bytes, uint8_t len)
         return;
     }
     SI44_Write(SI44_REG_SYNC3, bytes, len);
+}
+
+void SI44_ForceRecalibrate(void)
+{
+    uint8_t t = SI44_FORCE_RACALIBRATION_VAL;
+    SI44_Write(SI44_REG_CALIBRATION, &t, 1);
+    HAL_Delay(10);
 }

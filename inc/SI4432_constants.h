@@ -65,6 +65,11 @@ typedef enum {
 #define SI44_DATA_MANCHESTER_INVERSION  0b00000100
 #define SI44_DATA_MANCHESTER_POLARITY   0b00001000
 
+//READY mode, PPL IS ON, Enable LOW Battery detect
+#define SI44_OPERATION_MODE_DEFAULT     0b01000011
+//Force recalibration
+#define SI44_FORCE_RACALIBRATION_VAL    0b00011110
+
 typedef enum {
     SI44_MODULATION_SOURCE_GPIO    = 0b00000000,
     SI44_MODULATION_SOURCE_SDI     = 0b00010000,
@@ -111,5 +116,7 @@ typedef enum {
 #define SI44_REG_TEMP_CONFIG            0x12
 
 #define SI44_REG_SYNC3                  0x36
+
+#define SI44_REG_CALIBRATION            0x55
 
 #endif

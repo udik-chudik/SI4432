@@ -36,3 +36,8 @@ HAL_StatusTypeDef HAL_GPIO_WritePin( GPIO_TypeDef * port, uint16_t pin,  GPIO_Pi
 {
     return 1;
 }
+
+void HAL_Delay(int a)
+{
+    return;
+}
