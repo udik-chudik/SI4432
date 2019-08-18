@@ -153,3 +153,10 @@ void SI44_ClearTXFIFO(void)
     a = 0;
     SI44_Write(SI44_REG_CTRL2, &a, 1);
 }
+
+uint8_t SI44_ReadBatteryVoltage(void)
+{
+    uint8_t value;
+    SI44_Read(SI44_REG_BATTERY_VOLTAGE, &value, 1);
+    return value;
+}

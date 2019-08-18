@@ -281,3 +281,10 @@ void test_SI44_ResendPacket(void)
 
 
 }
+
+void test_SI44_ReadBatteryVoltage(void)
+{
+    uint8_t v = SI44_ReadBatteryVoltage();
+    TEST_ASSERT_EQUAL(0x1b, fake_io_call_stack[0].reg);
+    TEST_ASSERT_EQUAL(1, v);
+}
