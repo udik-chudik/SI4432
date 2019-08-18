@@ -6,6 +6,8 @@ fake_io_call * fake_io_call_stack;
 
 int fake_io_ncall;
 SPI_HandleTypeDef * spi_interface;
+GPIO_TypeDef * nss_port;
+uint16_t nss_pin;
 
 void SI44_Read(uint8_t reg, uint8_t * buf, uint8_t length)
 {
@@ -31,7 +33,9 @@ void SI44_Write(uint8_t reg, uint8_t * buf, uint8_t length)
     fake_io_call_stack[fake_io_ncall++] = call;
 }
 
-void SI44_IO_Init(SPI_HandleTypeDef * hspi)
+void SI44_IO_Init(SPI_HandleTypeDef * hspi, GPIO_TypeDef *GPIOx, uint16_t GPIO_Pin)
 {
     spi_interface = hspi;
+    nss_port = GPIOx;
+    nss_pin = GPIO_Pin;
 }

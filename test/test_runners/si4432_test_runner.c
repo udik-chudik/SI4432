@@ -88,19 +88,19 @@ int main(void)
   RUN_TEST(test_SI44_CalcFrequencyDeviationRegister, 23);
   RUN_TEST(test_SI44_CalcFrequencyCarier, 36);
   RUN_TEST(test_SI44_CalcDataRateRegisters, 90);
-  RUN_TEST(test_SI44_CalcPHRegisters, 118);
-  RUN_TEST(test_SI44_CalcConfigRegisters, 140);
-  RUN_TEST(test_SI44_ReadStatus, 156);
-  RUN_TEST(test_SI44_Reset, 166);
-  RUN_TEST(test_SI44_Init, 175);
-  RUN_TEST(test_SI44_SetConfig, 187);
-  RUN_TEST(test_SI44_SetPHConfig, 202);
-  RUN_TEST(test_SI44_SetFrequency, 222);
-  RUN_TEST(test_SI44_SetDataRate, 235);
-  RUN_TEST(test_SI44_SetFrequencyDeviation, 245);
-  RUN_TEST(test_SI44_SetTXPower, 255);
-  RUN_TEST(test_SI44_SendPacket, 266);
-  RUN_TEST(test_SI44_ResendPacket, 279);
+  RUN_TEST(test_SI44_CalcPHRegisters, 113);
+  RUN_TEST(test_SI44_CalcConfigRegisters, 135);
+  RUN_TEST(test_SI44_ReadStatus, 151);
+  RUN_TEST(test_SI44_Reset, 161);
+  RUN_TEST(test_SI44_Init, 170);
+  RUN_TEST(test_SI44_SetConfig, 183);
+  RUN_TEST(test_SI44_SetPHConfig, 198);
+  RUN_TEST(test_SI44_SetFrequency, 218);
+  RUN_TEST(test_SI44_SetDataRate, 231);
+  RUN_TEST(test_SI44_SetFrequencyDeviation, 241);
+  RUN_TEST(test_SI44_SetTXPower, 251);
+  RUN_TEST(test_SI44_SendPacket, 262);
+  RUN_TEST(test_SI44_ResendPacket, 275);
 
   return suite_teardown(UnityEnd());
 }

@@ -21,7 +21,7 @@ typedef struct
 } si44_config;
 uint8_t SI44_ReadStatus(void);
 void SI44_Reset(void);
-void SI44_Init(SPI_HandleTypeDef * hspi);
+void SI44_Init(SPI_HandleTypeDef * hspi, GPIO_TypeDef *GPIOx, uint16_t GPIO_Pin);
 void SI44_SetConfig(si44_config * conf);
 void SI44_SetPHConfig(si44_ph_config * conf);
 void SI44_SetFrequency(float freq);

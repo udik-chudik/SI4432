@@ -31,3 +31,8 @@ HAL_StatusTypeDef HAL_SPI_Transmit (SPI_HandleTypeDef * hspi, uint8_t * pData, u
     fake_io_hal_transmit_params[fake_io_ncall++] = p;
     return 1;
 }
+
+HAL_StatusTypeDef HAL_GPIO_WritePin( GPIO_TypeDef * port, uint16_t pin,  GPIO_PinState state)
+{
+    return 1;
+}

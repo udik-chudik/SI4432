@@ -35,6 +35,6 @@ void test_SI44_Read(void)
 
     TEST_ASSERT_EQUAL(0x7a, fake_io_hal_transmit_receive_params[0].pTxData[0]);
     TEST_ASSERT_EQUAL(1, fake_io_ncall);
-    TEST_ASSERT_EQUAL(3, buf[2]);
+    TEST_ASSERT_EQUAL(3 + 1, buf[2]);
     TEST_ASSERT_EQUAL(11, fake_io_hal_transmit_receive_params[0].Size);
 }

@@ -69,9 +69,9 @@ void SI44_Reset(void)
     SI44_Write(SI44_REG_CTRL1, &reset, 1);
 }
 
-void SI44_Init(SPI_HandleTypeDef * hspi)
+void SI44_Init(SPI_HandleTypeDef * hspi, GPIO_TypeDef *GPIOx, uint16_t GPIO_Pin)
 {
-    SI44_IO_Init(hspi);
+    SI44_IO_Init(hspi, GPIOx, GPIO_Pin);
     SI44_Reset();
 }
 
