@@ -52,6 +52,7 @@ extern void test_SI44_SetTXPower(void);
 extern void test_SI44_SendPacket(void);
 extern void test_SI44_ResendPacket(void);
 extern void test_SI44_ReadBatteryVoltage(void);
+extern void test_SI44_ReadTemperature(void);
 
 
 /*=======Suite Setup=====*/
@@ -103,6 +104,7 @@ int main(void)
   RUN_TEST(test_SI44_SendPacket, 262);
   RUN_TEST(test_SI44_ResendPacket, 275);
   RUN_TEST(test_SI44_ReadBatteryVoltage, 285);
+  RUN_TEST(test_SI44_ReadTemperature, 292);
 
   return suite_teardown(UnityEnd());
 }

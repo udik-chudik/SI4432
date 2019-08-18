@@ -31,4 +31,5 @@ void SI44_SetTXPower(SI44_TX_POWER power);
 void SI44_SendPacket(uint8_t * buffer, uint8_t length);
 void SI44_ResendPacket(void);
 uint8_t SI44_ReadBatteryVoltage(void);
+uint8_t SI44_ReadTemperature(void);
 #endif

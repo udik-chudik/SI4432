@@ -160,3 +160,21 @@ uint8_t SI44_ReadBatteryVoltage(void)
     SI44_Read(SI44_REG_BATTERY_VOLTAGE, &value, 1);
     return value;
 }
+
+uint8_t SI44_ReadTemperature(void)
+{
+    //Set adc input to internal temp. sensor
+    uint8_t t = 0;
+    SI44_Write(SI44_REG_ADC_CONFIG, &t, 1);
+    //Set temperature range
+    t = 0b00100000;
+    SI44_Write(SI44_REG_TEMP_CONFIG, &t, 1);
+    //Trigger ADC conversion
+    t = 0b10000000;
+    SI44_Write(SI44_REG_ADC_CONFIG, &t, 1);
+    //Wait for ADC finish
+    HAL_Delay(2);
+    //Read out ADC value
+    SI44_Read(SI44_REG_ADC_VALUE, &t, 1);
+    return t;
+}

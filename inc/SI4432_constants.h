@@ -106,5 +106,8 @@ typedef enum {
 #define SI44_REG_FIFO_ACCESS            0x7f
 
 #define SI44_REG_BATTERY_VOLTAGE        0x1b
+#define SI44_REG_ADC_CONFIG             0x0f
+#define SI44_REG_ADC_VALUE              0x11
+#define SI44_REG_TEMP_CONFIG            0x12
 
 #endif

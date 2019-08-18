@@ -39,3 +39,8 @@ void SI44_IO_Init(SPI_HandleTypeDef * hspi, GPIO_TypeDef *GPIOx, uint16_t GPIO_P
     nss_port = GPIOx;
     nss_pin = GPIO_Pin;
 }
+
+void HAL_Delay(int a)
+{
+    return;
+}

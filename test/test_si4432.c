@@ -288,3 +288,28 @@ void test_SI44_ReadBatteryVoltage(void)
     TEST_ASSERT_EQUAL(0x1b, fake_io_call_stack[0].reg);
     TEST_ASSERT_EQUAL(1, v);
 }
+
+void test_SI44_ReadTemperature(void)
+{
+    //Should configure ADC for internal Temp. sensor
+    //Should set appropriate ADC offset
+    //Should configure temp. sensor calibration
+    //Should start ADC conversion
+    //Should wait for ADC conversion finishes
+    //Should give a right value))
+    uint8_t T = SI44_ReadTemperature();
+    //Config ADC
+    TEST_ASSERT_EQUAL(0x0f, fake_io_call_stack[0].reg);
+    TEST_ASSERT_EQUAL(0b00000000, fake_io_call_stack[0].buf[0]);
+    //Config TEMP. RANGE (-40 +63, 0.5 resolution, in Celsium)
+    TEST_ASSERT_EQUAL(0x12, fake_io_call_stack[1].reg);
+    //TEST_ASSERT_EQUAL(0b00100000, fake_io_call_stack[1].buf[0]);
+    //Check for triggering ADC read
+    TEST_ASSERT_EQUAL(0x0f, fake_io_call_stack[2].reg);
+    //TEST_ASSERT_EQUAL(0b10000000, fake_io_call_stack[2].buf[0]);
+    
+    //Check for reading ADC value after conversion
+    TEST_ASSERT_EQUAL(0x11, fake_io_call_stack[3].reg);
+    TEST_ASSERT_EQUAL(T, 1);
+
+}
