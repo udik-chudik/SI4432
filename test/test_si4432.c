@@ -120,7 +120,7 @@ void test_SI44_CalcPHRegisters(void)
     uint8_t regs[3];
     si44_ph_config config;
 
-    config.path = SI44_PH_TX_ONLY;
+    config.path = SI44_PH_PATH_TX_ONLY;
     config.preambule_length = 32;
     config.sync = SI44_PH_SYNC_2;
     config.header = SI44_PH_HEADER_OFF;
@@ -204,7 +204,7 @@ void test_SI44_SetPHConfig(void)
     //Should write appropriate registers
     si44_ph_config config;
 
-    config.path = SI44_PH_TX_ONLY;
+    config.path = SI44_PH_PATH_TX_ONLY;
     config.preambule_length = 32;
     config.sync = SI44_PH_SYNC_2;
     config.header = SI44_PH_HEADER_OFF;

@@ -65,7 +65,7 @@ uint8_t SI44_ReadStatus(void)
 
 void SI44_Reset(void)
 {
-    uint8_t reset = 0b10000000;
+    uint8_t reset = 0b10000001;
     SI44_Write(SI44_REG_CTRL1, &reset, 1);
 }
 
@@ -81,6 +81,15 @@ void SI44_SetConfig(si44_config * conf)
     SI44_CalcConfigRegisters(*conf, buf);
     SI44_Write(SI44_REG_CONF1, &buf[0], 1);
     SI44_Write(SI44_REG_CONF2, &buf[1], 1);
+    //Load capacitance
+    uint8_t a = 0xa5;
+    SI44_Write(0x09, &a, 1);
+    //GPIO0 & GPIO1 - TX/RX switch
+    a = 0x12;
+    SI44_Write(0x0b, &a, 1);
+    a = 0x15;
+    SI44_Write(0x0c, &a, 1);
+    
 }
 
 void SI44_SetPHConfig(si44_ph_config * conf)
@@ -123,11 +132,24 @@ void SI44_SetTXPower(SI44_TX_POWER power)
 
 void SI44_SendPacket(uint8_t * buf, uint8_t length)
 {
+    uint8_t b;
+    SI44_ClearTXFIFO();
+    SI44_Read(0x03, &b, 1);
+    SI44_Read(0x04, &b, 1);
+    SI44_Write(0x3e, &length, 1);
     SI44_Write(SI44_REG_FIFO_ACCESS, buf, length);
     SI44_ResendPacket();
 }
 void SI44_ResendPacket(void)
 {
-    uint8_t txon = 0b00001000;
+    uint8_t txon = 0b00001001;
     SI44_Write(SI44_REG_CTRL1, &txon, 1);
+}
+
+void SI44_ClearTXFIFO(void)
+{
+    uint8_t a = 1;
+    SI44_Write(SI44_REG_CTRL2, &a, 1);
+    a = 0;
+    SI44_Write(SI44_REG_CTRL2, &a, 1);
 }

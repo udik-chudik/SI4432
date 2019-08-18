@@ -4,7 +4,8 @@
 
 #define SPI_HandleTypeDef int
 #define HAL_StatusTypeDef int
-
+#define GPIO_PIN_RESET 0
+#define GPIO_PIN_SET 1
 extern int fake_io_ncall;
 
 

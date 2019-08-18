@@ -4,7 +4,15 @@ SPI_HandleTypeDef * spi_interface;
 
 void SI44_Read(uint8_t reg, uint8_t * buf, uint8_t length)
 {
-    HAL_SPI_TransmitReceive(spi_interface, &reg, buf, length + 1, 10);
+    uint8_t b[length + 1];
+    HAL_GPIO_WritePin(GPIOB, GPIO_PIN_12, GPIO_PIN_RESET);
+    HAL_SPI_TransmitReceive(spi_interface, &reg, b, length+1, 100);
+    HAL_GPIO_WritePin(GPIOB, GPIO_PIN_12, GPIO_PIN_SET);
+    for (int i = 0; i < length; i++)
+    {
+        buf[i] = b[i+1];
+    }
+    
 }
 
 void SI44_Write(uint8_t reg, uint8_t * buf, uint8_t length)
@@ -15,7 +23,9 @@ void SI44_Write(uint8_t reg, uint8_t * buf, uint8_t length)
     {
         b[i+1] = buf[i];
     }
-    HAL_SPI_Transmit(spi_interface, b, length + 1, 10);
+    HAL_GPIO_WritePin(GPIOB, GPIO_PIN_12, GPIO_PIN_RESET);
+    HAL_SPI_Transmit(spi_interface, b, length + 1, 100);
+    HAL_GPIO_WritePin(GPIOB, GPIO_PIN_12, GPIO_PIN_SET);
 }
 
 void SI44_IO_Init(SPI_HandleTypeDef * hspi)
