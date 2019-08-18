@@ -110,4 +110,6 @@ typedef enum {
 #define SI44_REG_ADC_VALUE              0x11
 #define SI44_REG_TEMP_CONFIG            0x12
 
+#define SI44_REG_SYNC3                  0x36
+
 #endif

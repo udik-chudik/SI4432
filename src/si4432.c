@@ -178,3 +178,12 @@ uint8_t SI44_ReadTemperature(void)
     SI44_Read(SI44_REG_ADC_VALUE, &t, 1);
     return t;
 }
+
+void SI44_SetSyncBytes(uint8_t * bytes, uint8_t len)
+{
+    if (len > 4) 
+    {
+        return;
+    }
+    SI44_Write(SI44_REG_SYNC3, bytes, len);
+}

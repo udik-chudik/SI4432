@@ -313,3 +313,21 @@ void test_SI44_ReadTemperature(void)
     TEST_ASSERT_EQUAL(T, 1);
 
 }
+
+void test_SI44_SetSyncBytes(void)
+{
+    uint8_t s[] = {1,2,3,4};
+    SI44_SetSyncBytes(&s, 4);
+    
+    TEST_ASSERT_EQUAL(1, fake_io_ncall);
+
+    TEST_ASSERT_EQUAL(0x36, fake_io_call_stack[0].reg);
+    TEST_ASSERT_EQUAL(1, fake_io_call_stack[0].buf[0]);
+    TEST_ASSERT_EQUAL(2, fake_io_call_stack[0].buf[1]);
+    TEST_ASSERT_EQUAL(3, fake_io_call_stack[0].buf[2]);
+    TEST_ASSERT_EQUAL(4, fake_io_call_stack[0].buf[3]);
+
+    SI44_SetSyncBytes(&s, 5);
+    TEST_ASSERT_EQUAL(1, fake_io_ncall);
+
+}

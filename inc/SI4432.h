@@ -32,4 +32,5 @@ void SI44_SendPacket(uint8_t * buffer, uint8_t length);
 void SI44_ResendPacket(void);
 uint8_t SI44_ReadBatteryVoltage(void);
 uint8_t SI44_ReadTemperature(void);
+void SI44_SetSyncBytes(uint8_t * bytes, uint8_t length);
 #endif
